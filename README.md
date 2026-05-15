@@ -1,101 +1,107 @@
-# AI Voice Assistant
+# Virtual Assistant
 
-A Python-based AI Voice Assistant developed using speech recognition and text-to-speech technologies to perform voice-controlled tasks and automation.
-
-The assistant can recognize user voice commands in real time, respond using speech output, and perform various system and web-based operations.
+A Python-based AI Virtual Assistant capable of performing voice commands, web automation, music playback, and AI-generated responses.
 
 ---
 
 ## Features
 
-* Real-time voice command recognition
-* Speech-to-text conversion
-* Text-to-speech response system
-* Open websites through voice commands
-* Play music using voice input
-* Basic automation functionalities
-* Interactive voice-based assistant interface
+- Speech Recognition
+- Voice Response System
+- Open Websites Automatically
+- AI Chat Responses
+- Music Playback Support
+- Text-to-Speech Conversion
+- Browser Automation
 
 ---
 
 ## Technologies Used
 
-* Python
-* SpeechRecognition
-* gTTS
-* pyttsx3
-* pygame
+- Python
+- SpeechRecognition
+- pyttsx3
+- OpenAI API
+- pygame
+- gTTS
+- webbrowser module
 
 ---
 
 ## Project Structure
 
-```bash id="x1a9vk"
-├── assistant.py
-├── requirements.txt
+```bash
+Virtual_Assistant/
+│
+├── main.py
+├── music_library.py
+├── response.py
+├── __pycache__/
 └── README.md
 ```
 
 ---
 
-## Installation & Setup
+## Installation
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
-```bash id="b0s5xo"
-git clone https://github.com/yourusername/ai-voice-assistant.git
+```bash
+git clone https://github.com/pragyakanwar/Virtual_Assistant.git
 ```
 
-### 2. Navigate to the Project Folder
+### 2. Open Project Folder
 
-```bash id="0e6l4v"
-cd ai-voice-assistant
+```bash
+cd Virtual_Assistant
 ```
 
-### 3. Install Dependencies
+### 3. Install Required Libraries
 
-```bash id="42b6mn"
-pip install -r requirements.txt
-```
-
-### 4. Run the Assistant
-
-```bash id="o7m3zs"
-python assistant.py
+```bash
+pip install speechrecognition pyttsx3 openai gtts pygame pyaudio
 ```
 
 ---
 
-## Working of the System
+## Run the Project
 
-1. The assistant listens to user voice commands using the microphone.
-2. SpeechRecognition converts voice input into text.
-3. The system processes the command and performs the requested action.
-4. The assistant responds using text-to-speech functionality.
+```bash
+python main.py
+```
 
 ---
 
-## Example Commands
+## How It Works
 
-* “Open YouTube”
-* “Play music”
-* “Open Google”
-* “Tell me the time”
+- User gives voice command through microphone
+- SpeechRecognition converts speech into text
+- Assistant processes the command
+- AI generates response
+- pyttsx3/gTTS converts response into voice
+- Assistant performs requested task
+
+---
+
+## Demo Video
+
+🎥 Project Demo:  https://drive.google.com/file/d/1HGHPpO_F4LokRp-Uh9BB-G_IyG_ZXyQz/view?usp=drivesdk
+
 
 ---
 
 ## Future Improvements
 
-* AI chatbot integration
-* GUI-based virtual assistant
-* Weather and news updates
-* Voice authentication system
-* Integration with APIs and smart devices
-* Advanced NLP capabilities
+- GUI Interface
+- Better AI Conversation
+- Mobile App Version
+- Smart Task Automation
+- Wake Word Detection
 
 ---
 
 ## Author
 
 Pragya Kanwar
-B.Tech – Artificial Intelligence & Data Science
+
+GitHub: https://github.com/pragyakanwar
