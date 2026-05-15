@@ -18,18 +18,19 @@ def speak_old(text) :
     engine.runAndWait()
 
 def speak(text):
-   tts = gTTS(text)
-   tts.save('temp.mp3') 
 
-   pygame.mixer.init()
-   pygame.mixer.music.load("temp.mp3")
-   pygame.mixer.music.play()
+    tts = gTTS(text)
+    tts.save("temp.mp3")
 
-   # Keep the script running until the music finishes
+    pygame.mixer.music.load("temp.mp3")
+    pygame.mixer.music.play()
 
-   while pygame.mixer.music.get_busy():
-        time.sleep(1)  
-    # Avoids excessive CPU usage 
+    while pygame.mixer.music.get_busy():
+        time.sleep(1)
+
+    pygame.mixer.music.unload()
+
+    os.remove("temp.mp3")
      
 def aiProcess(command): 
     openai.api_key = ""
@@ -62,10 +63,26 @@ def processCommand(c):
    elif "open chrome" in c.lower():
         webbrowser.open("https://chrome.com")
 
-   elif c.lower().startswith("play") :  
-        song = c.lower().split(" ")[1]                 
-        link =  music_library.musicsong
-        webbrowser.open(link)  
+   elif c.lower().startswith("play"):
+
+        song = c.lower().replace("play", "").strip()
+
+        print("the song", song)
+
+        found = False
+
+        for key in music_library.music:
+
+            if song in key:
+                link = music_library.music[key]
+                webbrowser.open(link)
+                speak(f"Playing {key}")
+                found = True
+                break
+
+        if not found:
+            print("Available songs:", music_library.music.keys())
+            speak("Song not found in music library")
 
    else :
        
@@ -74,7 +91,7 @@ def processCommand(c):
        speak(output)
 
 if  __name__ == "__main__":
-   speak("Initializing Pragya...... ")
+   speak("Hello Pragya...... ")
    while True:
     r = sr.Recognizer()
 
@@ -85,7 +102,7 @@ if  __name__ == "__main__":
         with sr.Microphone() as source:
           
           print("I'm listening")
-          audio = r.listen(source,timeout=3,phrase_time_limit=3)
+          audio = r.listen(source,timeout=5,phrase_time_limit=5)
 
         word = r.recognize_google(audio)
         if word.lower() == ("Pragya"):
@@ -94,9 +111,13 @@ if  __name__ == "__main__":
         # LISTEN FOR COMMAND 
 
         with sr.Microphone() as source:
-            print("bhenchod active.....")  
-            audio = r.listen(source)
-            command = r.recognize_google(audio)
+          print("Virtual Assistant active.....")
+
+          audio = r.listen(source, timeout=5, phrase_time_limit=5)
+
+          command = r.recognize_google(audio)
+
+        print("Full command:", command)
 
         processCommand(command)
       
